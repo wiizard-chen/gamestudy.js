@@ -51,11 +51,11 @@
         var __main = function () {
             enableDebugMode(true)
 
-            var game = Wgame()
+            var game = Wgame(60)
             var paddle = Paddle()
             var ball = Ball()
 
-            blocks = loadLevel(3)
+            blocks = loadLevel(4)
 
             game.registerAction('a', function () {
                 paddle.moveleft()
@@ -84,9 +84,9 @@
             }
 
             game.update = function () {
-                if(window.paused)
+                if (window.paused)
                     return
-                
+
                 ball.move()
                 if (ball.fired && paddle.collide(ball)) {
                     ball.speedChange(1)

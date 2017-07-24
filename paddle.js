@@ -1,5 +1,5 @@
 var Paddle = function () {
-        var img = imageFromPath('paddle.png')
+        var img = imageFromPath('PNG/paddle.png')
         var o = {
             image: img,
             x: 130,
