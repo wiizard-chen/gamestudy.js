@@ -8,16 +8,35 @@ var Block = function (position) {
         w: 50,
         h: 50,
         alive: true,
-        lifes: p[2] || 1,
+        lives: p[2] || 1,
     }
     o.kill = function () {
-        o.lifes--
-        if (o.lifes < 1) {
+        o.lives--
+        if (o.lives < 1) {
             o.alive = false
         }
     }
     o.collide = function (b) {
-        return o.alive && (rectIntersects(o, b) || rectIntersects(b, o))
+        return o.alive && rectIntersects(o,b)
     }
     return o
+}
+
+var loadLevel = function (n) {
+    n = n - 1
+    var level
+
+    if (n >= levels.length) {
+        level = levels[levels.length - 1]
+    } else {
+        level = levels[n]
+    }
+
+    var blocks = []
+    for (var i = 0; i < level.length; i++) {
+        var p = level[i]
+        var b = Block(p)
+        blocks.push(b)
+    }
+    return blocks
 }

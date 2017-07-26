@@ -1,5 +1,5 @@
 var Paddle = function () {
-    var img = imageFromPath('PNG/paddle.png',180,35)
+    var img = imageFromPath('PNG/paddle.png', 180, 35)
     var canvas = document.querySelector("#id-canvas")
     var o = {
         image: img,
@@ -24,16 +24,18 @@ var Paddle = function () {
     }
 
     o.collide = function (ball) {
-        var ballheight = ball.y + ball.image.height - Math.abs(o.y)
-        var ballheight2 = ball.y + ball.image.height - Math.abs(o.y) - o.image.height
-        if (ballheight >= 0 && ballheight2 <= 0) {
-            var ballWidth = ball.x + ball.image.width - Math.abs(o.x)
-            var ballWidth2 = ball.x - Math.abs(o.x) - o.image.width
-            if (ballWidth >= 0 && ballWidth2 <= 0) {
-                return true
-            }
-        }
-        return false
+        return rectIntersects(o, ball)
+
+        // var ballheight = ball.y + ball.image.height - Math.abs(o.y)
+        // var ballheight2 = ball.y + ball.image.height - Math.abs(o.y) - o.image.height
+        // if (ballheight >= 0 && ballheight2 <= 0) {
+        //     var ballWidth = ball.x + ball.image.width - Math.abs(o.x)
+        //     var ballWidth2 = ball.x - Math.abs(o.x) - o.image.width
+        //     if (ballWidth >= 0 && ballWidth2 <= 0) {
+        //         return true
+        //     }
+        // }
+        // return false
     }
     return o
 }

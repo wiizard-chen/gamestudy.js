@@ -18,7 +18,7 @@ var Ball = function () {
 
   o.move = function () {
     if (o.fired) {
-      // log('move')
+      //log('move')
       if (o.x < 0 || o.x > canvas.width - o.image.width) {
         o.speedX = -o.speedX
       }
@@ -33,10 +33,17 @@ var Ball = function () {
     }
   }
 
-  o.speedChange = function (num) {
+  o.hasPoint = function (x, y) {
+    var xIn = x >= o.x && x <= o.x + o.image.width
+    var yIn = y >= o.y && y <= o.y + o.image.height
+    return xIn && yIn
+  }
+
+  o.speedChange = function () {
     o.speedY *= -1
-    if (num == 1) o.y -= 10
-    else o.y += 4 * o.speedY
+    o.y += 4 * o.speedY
+    // if (num == 1) o.y -= 10
+    // else o.y += 4 * o.speedY
   }
   return o
 } 
